@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+hr {
+    scale: 0;
+    transition: 0.5s ease;
+    background-color: aqua;
+    height: 1.5px;
+}
+
+.active hr {
+    scale: 1;
+}
