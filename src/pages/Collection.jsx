@@ -44,7 +44,7 @@ function Collection() {
 
   return (
     <div className="flex justify-center my-10">
-      <div className="flex justify-center w-[70%]">
+      <div className="flex justify-center">
 
         <div className="flex flex-col gap-5">
           <p><strong className="">FILTER</strong></p>
@@ -107,7 +107,7 @@ function Collection() {
 
           <div className="flex flex-wrap justify-center gap-3">
             {filteredProducts.map((i) => (
-              <ProductItems key={i.id} image={i.image} price={i.price} name={i.name} />
+              <ProductItems id={i.id} image={i.image[0]} price={i.price} name={i.name} />
             ))}
           </div>
         </div>

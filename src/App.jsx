@@ -6,21 +6,21 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
-import Collection33 from "./pages/Collection33";
-import CollectionPractice from "./pages/CollectionPractice";
+import Product from "./pages/Product";
 function App() {
   return (
 
-    <div className="">
+    <div className="mx-auto w-[70%]">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/collection" element={<Collection />} />
-        <Route path="/collectionPrac" element={<CollectionPractice />} />
-        <Route path="/collection33" element={<Collection33 />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/product/:id" element={<Product />} />
+
+        
       </Routes>
       <Footer />
 
