@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/UserContext'
 import { useParams } from 'react-router-dom'
-import ProductItems from '../components/ProductItems'
+import RelatedProducts from '../components/RelatedProducts'
 
 function Product() {
     const { products, assets } = useContext(UserContext)
     const [productData, setProductData] = useState(false)
-    const [size, setSize] = useState("")
     const [image, setImage] = useState("")
     const { id } = useParams()
 
@@ -37,6 +36,7 @@ function Product() {
                     </div>
                     <div className='flex flex-col flex-1 gap-5'>
                         <h1 className='text-xl'><strong>{productData.name}</strong></h1>
+
                         <div className='flex gap-1 items-center'>
                             <img className='w-4 h-4' src={assets.star_icon} alt={productData.name} />
                             <img className='w-4 h-4' src={assets.star_icon} alt={productData.name} />
@@ -53,15 +53,7 @@ function Product() {
                 </div>
             </div>
             {/* cards end here */}
-            <div className='my-8'>
-                <p className='text-center text-xl'><strong>RELATED PRODUCTS</strong></p>
-                <div className='flex gap-3 my-8'>
-                    {products.map((i) => (
-                        <ProductItems id={i.id} image={i.image[0]} price={i.price} name={i.name} />
-                    )).slice(0, 5)}
-
-                </div>
-            </div>
+            <RelatedProducts />
         </div>
     ) : (<h1>No Product Found</h1>)
 }

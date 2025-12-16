@@ -6,7 +6,7 @@ function Collection() {
   const { products } = useContext(UserContext);
 // done
   const [inputVal, setInputVal] = useState("");
-  const [selectVal, setSelectVal] = useState("high");
+  const [selectVal, setSelectVal] = useState("low");
 
   const [men, setMen] = useState(false);
   const [women, setWomen] = useState(false);

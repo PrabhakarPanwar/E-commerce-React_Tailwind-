@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 import Product from "./pages/Product";
+import PlaceOrder from "./pages/PlaceOrder";
 function App() {
   return (
 
@@ -19,8 +20,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/:id" element={<Product />} />
-
-        
+        <Route path="/placeOrder" element={<PlaceOrder />} />
       </Routes>
       <Footer />
 
