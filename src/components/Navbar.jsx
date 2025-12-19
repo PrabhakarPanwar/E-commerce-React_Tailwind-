@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 
 function Navbar() {
-  const { assets } = useContext(UserContext)
+  const { assets, getTotalCount } = useContext(UserContext)
   const [visible, setVisible] = useState(false)
   return (
     <div className='flex justify-center items-center my-3 '>
@@ -24,7 +24,7 @@ function Navbar() {
           <img className='w-5 h-5 cursor-pointer' src={assets.profile_icon} alt="profile" />
           <Link to="/cart" className='relative'>
             <img className='w-5 h-5 cursor-pointer' src={assets.cart_icon} alt="cart" />
-            <p className='absolute flex justify-center items-center top-[12px] left-[10px] bg-black rounded-full text-white text-[0.5rem] h-[15px] w-[15px]'>10</p>
+            <p className='absolute flex justify-center items-center top-[12px] left-[10px] bg-black rounded-full text-white text-[0.5rem] h-[15px] w-[15px]'>{getTotalCount()}</p>
           </Link>
         </div>
 

@@ -20,7 +20,7 @@ function Home() {
                     <div className='flex flex-wrap justify-center gap-3 my-3'>
 
                         {products.map((i) => (
-                            <ProductItems name={i.name} price={i.price} image={i.image[0]} />)).slice(0, 10)}
+                            <ProductItems name={i.name} price={i.price} image={i.image[0]} id={i.id} />)).slice(0, 10)}
                     </div >
                 </div>
             </div>

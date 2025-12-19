@@ -18,7 +18,7 @@ function CartItems(props) {
                 </div>
             </div>
             <div className='border px-8'>
-                <p className=''>k</p>
+                <input type="number" value={props.qty} />
             </div>
             <div className=''>
                 <button className='h-5 w-5'><img src={assets.bin_icon} alt="" /></button>
