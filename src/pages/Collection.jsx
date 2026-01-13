@@ -4,7 +4,7 @@ import { UserContext } from "../context/UserContext";
 
 function Collection() {
   const { products } = useContext(UserContext);
-// done
+
   const [inputVal, setInputVal] = useState("");
   const [selectVal, setSelectVal] = useState("low");
 
@@ -44,14 +44,13 @@ function Collection() {
 
   return (
     <div className="flex justify-center my-10">
-      <div className="flex justify-center">
+      <div className="flex flex-col md:flex-row gap-3 justify-center">
 
-        <div className="flex flex-col gap-5">
-          <p><strong className="">FILTER</strong></p>
-          <button className="sm:hidden bg-black text-white">FILTER</button>
+        <div className="flex gap-5 flex-col">
+          <button><strong className="bg-black p-2 sm:px-16 rounded-lg text-white">FILTER</strong></button>
 
 
-          <div className="flex flex-col border p-3">
+          <div className="rounded-md flex items-center md:items-start gap-2 md:flex-col border p-3">
             <p className="p-1"><strong>CATEGORIES</strong></p>
             <label className="text-gray-600">
               <input type="checkbox" checked={men} onChange={(e) => setMen(e.target.checked)} /> Men
@@ -65,10 +64,10 @@ function Collection() {
           </div>
 
 
-          <div className="border p-3">
+          <div className="flex md:block items-center md:items-start rounded-md border p-3">
             <p className="p-1"><strong>SEARCH</strong></p>
             <input
-              className="border p-1"
+              className="border p-1 rounded-md"
               type="text"
               placeholder="Search products..."
               value={inputVal}
@@ -77,7 +76,7 @@ function Collection() {
           </div>
 
 
-          <div className="flex flex-col border p-3">
+          <div className="rounded-md flex items-center md:items-start md:flex-col border p-3 gap-2">
             <p className="p-1"><strong>SUB-CATEGORIES</strong></p>
             <label className="text-gray-600">
               <input type="checkbox" checked={topwear} onChange={(e) => setTopwear(e.target.checked)} /> Topwear
@@ -96,7 +95,7 @@ function Collection() {
           <div className="flex justify-between items-center px-3">
             <p>ALL <strong>COLLECTIONS</strong></p>
             <select
-              className="border w-32 p-1"
+              className="rounded-md border w-32 p-1"
               value={selectVal}
               onChange={(e) => setSelectVal(e.target.value)}
             >
@@ -106,8 +105,8 @@ function Collection() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-3">
-            {filteredProducts.map((i) => (
-              <ProductItems id={i.id} image={i.image[0]} price={i.price} name={i.name} />
+            {filteredProducts.map((i,index) => (
+              <ProductItems key={index} id={i.id} image={i.image[0]} price={i.price} name={i.name} />
             ))}
           </div>
         </div>

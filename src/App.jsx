@@ -8,6 +8,7 @@ import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 import Product from "./pages/Product";
 import PlaceOrder from "./pages/PlaceOrder";
+import Login from "./pages/Login";
 function App() {
   return (
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/placeOrder" element={<PlaceOrder />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
 

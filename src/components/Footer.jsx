@@ -6,13 +6,13 @@ function Footer() {
   const { assets } = useContext(UserContext)
   return (
     <div className='mt-36'>
-      <div className='flex justify-center'>
-        <div className='flex justify-evenly'>
-          <div className='w-[35%]'>
+      <div className='flex justify-center '>
+        <div className='flex flex-wrap gap-5'>
+          <div className='flex-1'>
             <img className='h-10 mb-4' src={assets.logo} alt="" />
-            <p className='text-start'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione ducimus quo aspernatur accusantium dolorem amet vel facere, aut, fuga, veniam quis</p>
+            <p className=''>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rationes</p>
           </div>
-          <div className=''>
+          <div className='flex-1 ml-10'>
             <p className='mb-4'><strong>Company</strong></p>
             <div className='flex flex-col'>
               <Link to="/">Home</Link>
@@ -22,7 +22,7 @@ function Footer() {
             </div>
           </div>
 
-          <div className=''>
+          <div className='flex-1'>
             <p className='mb-4 uppercase'><strong>get in touch</strong></p>
             <p>+678-989-090</p>
             <p>contact@onlinestore.com</p>

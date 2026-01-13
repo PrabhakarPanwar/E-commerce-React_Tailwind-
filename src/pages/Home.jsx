@@ -19,8 +19,8 @@ function Home() {
                 <div className='flex justify-center'>
                     <div className='flex flex-wrap justify-center gap-3 my-3'>
 
-                        {products.map((i) => (
-                            <ProductItems name={i.name} price={i.price} image={i.image[0]} id={i.id} />)).slice(0, 10)}
+                        {products.map((i, index) => (
+                            <ProductItems key={index} name={i.name} price={i.price} image={i.image[0]} id={i.id} />)).slice(0, 10)}
                     </div >
                 </div>
             </div>
@@ -31,13 +31,13 @@ function Home() {
                 <div className='flex justify-center'>
                     <div className='flex flex-wrap justify-center gap-3 my-3 w-[80%]'>
 
-                        {products.map((i) => (
-                            <ProductItems id={i.id} name={i.name} price={i.price} image={i.image[0]} />)).slice(10, 15)}
+                        {products.map((i,index) => (
+                            <ProductItems key={index} id={i.id} name={i.name} price={i.price} image={i.image[0]} />)).slice(10, 15)}
                     </div >
                 </div>
             </div>
             <OurPolicy />
-            <NewsLetterBox/>
+            <NewsLetterBox />
         </div>
     )
 }

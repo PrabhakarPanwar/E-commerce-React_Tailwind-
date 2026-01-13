@@ -10,20 +10,20 @@ function PlaceOrder() {
         <form className='flex gap-4 flex-col flex-1'>
           <p className='uppercase text-2xl my-4'>Delivery <strong>information</strong></p>
           <div className='flex gap-3'>
-            <input className='border p-2 w-full' type="text" placeholder='First Name' />
-            <input className='border p-2 w-full' type="text" placeholder='Last Name' />
+            <input className='border p-2 w-full' type="text" placeholder='First Name' required />
+            <input className='border p-2 w-full' type="text" placeholder='Last Name' required />
           </div>
-          <input className='border p-2' type="email" placeholder='Email' />
-          <input className='border p-2' type="text" placeholder='Street' />
+          <input className='border p-2' type="email" placeholder='Email' required />
+          <input className='border p-2' type="text" placeholder='Street' required />
           <div className='flex gap-3'>
-            <input className='border p-2 w-full' type="text" placeholder='City' />
-            <input className='border p-2 w-full' type="text" placeholder='State' />
+            <input className='border p-2 w-full' type="text" placeholder='City' required />
+            <input className='border p-2 w-full' type="text" placeholder='State' required />
           </div>
           <div className='flex gap-3'>
-            <input className='border p-2 w-full' type="number" placeholder='Zip/Pin Code' />
-            <input className='border p-2 w-full' type="text" placeholder='Country' />
+            <input className='border p-2 w-full' type="number" placeholder='Zip/Pin Code' required />
+            <input className='border p-2 w-full' type="text" placeholder='Country' required />
           </div>
-          <input className='border p-2' type="tel" pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' placeholder='Phone Number' />
+          <input className='border p-2' type="tel" pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' placeholder='Phone Number' required />
         </form>
         <div className='flex-1'>
           <CartTotal razor={assets.razorpay_logo} stripe={assets.stripe_logo} cod={"CASH ON DELIVERY"} button={"Place Order"} />

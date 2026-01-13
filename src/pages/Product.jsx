@@ -24,19 +24,19 @@ function Product() {
     return productData ? (
         <div>
             <div className='flex justify-center'>
-                <div className='flex gap-10'>
-                    <div className='flex gap-3 flex-1'>
-                        <div className='flex flex-col gap-2'>
+                <div className='flex flex-col sm:flex-row gap-10'>
+                    <div className='flex flex-col sm:flex-row gap-3 flex-1'>
+                        <div className='flex sm:flex-col gap-2'>
                             {productData.image.map((i, index) => (
                                 <img onClick={() => setImage(i)} src={i} className="w-20 h-25 cursor-pointer" key={index} />
                             ))}
                         </div>
-                        <div className=''>
+                        <div className='mx-auto'>
                             <img className='h-[70vh]' src={image} alt="" />
                         </div>
                     </div>
-                    <div className='flex flex-col flex-1 gap-5'>
-                        <h1 className='text-xl'><strong>{productData.name}</strong></h1>
+                    <div className='flex flex-col flex-1 gap-5 items-center'>
+                        <h1 className='text-xl text-center'><strong>{productData.name}</strong></h1>
 
                         <div className='flex gap-1 items-center'>
                             <img className='w-4 h-4' src={assets.star_icon} alt={productData.name} />
@@ -49,12 +49,12 @@ function Product() {
                         <p className='text-2xl'><strong>${productData.price}</strong></p>
                         <p className='w-[70%]'>{productData.description}</p>
                         <strong>Select Size</strong>
-                        <div>
+                        <div className=''>
                             {productData.sizes.map((i) => (
                                 <button key={i} className={`outline-none border-2 h-10 w-10 mr-2 bg-gray-100 ${i == size ? "border-orange-500" : ""}`} onClick={() => setSize(i)} >{i}</button>
                             ))}
                         </div>
-                        <button onClick={() => addToCart(productData.id, size)} className='bg-black text-white w-[30%] py-3'>ADD TO CART</button>
+                        <button onClick={() => addToCart(productData.id, size)} className='bg-black text-white p-3'>ADD TO CART</button>
                         <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
                             <p>100% original product.</p>
                             <p>Cash on delivery is available on this product.</p>
@@ -87,7 +87,7 @@ function Product() {
                 </p>
             </div>
             {/* cards end here */}
-            <RelatedProducts />
+            <RelatedProducts  />
         </div>
     ) : (<h1>No Product Found</h1>)
 }

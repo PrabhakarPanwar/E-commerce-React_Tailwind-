@@ -4,9 +4,11 @@ import CartItems from '../components/CartItems'
 import CartTotal from '../components/CartTotal'
 
 function Cart() {
-  const { products, cartItem } = useContext(UserContext)
+  const { products, cartItem, getTotalAmount } = useContext(UserContext)
   const [productData, setProductData] = useState([])
-  console.log(cartItem)
+
+  // console.log(cartItem)
+
   useEffect(() => {
     let tempData = []
     for (let id in cartItem) {
@@ -22,27 +24,27 @@ function Cart() {
     }
     setProductData(tempData)
 
-    // console.log(productData)
   }, [cartItem])
   return (
     <div>
       <p className='text-2xl mb-5'>Your <strong>Cart</strong></p>
       <div className='flex flex-wrap'>
         {
-          productData.map((itemid, ind) => {
+          productData.map ((itemid, ind) => {
             let product = products.find((i) => i.id == itemid._id)
-            console.log(product)
 
             return (
-              <CartItems image={product.image[0]} id={product.id} name={product.name} price={product.price} size={itemid.size} qty={itemid.quantity} />
-
+              <CartItems key={ind} image={product.image[0]} id={product.id} name={product.name} price={product.price} size={itemid.size} qty={itemid.quantity} />
             )
           })
         }
       </div>
       <div className='flex justify-end my-10 '>
         <div className='w-[50%]'>
-          <CartTotal button={"PROCEED TO CHECKOUT"} />
+          {
+            <CartTotal />
+          }
+
         </div>
       </div>
     </div>

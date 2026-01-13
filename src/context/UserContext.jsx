@@ -50,12 +50,38 @@ function UserProvider({ children }) {
             console.log(error)
         }
     }
-    useEffect(() => {
+
+
+    const getTotalAmount = () => {
+        let totalAmount = 0;
+        for (let id in cartItem) {
+            let itemInfo = products.find(i => i.id == id)
+            for (let s in cartItem[id]) {
+                if (cartItem[id][s]) {
+                        totalAmount += itemInfo.price *cartItem[id][s]
+                }
+            }
+        }
+        return totalAmount
+    }
+
+
+    const updateCart = (id, size, qty) => {
+        let updateItem = structuredClone(cartItem)
+        console.log(updateItem)
+        console.log(`id ${id} size ${size} qty ${qty}`)
+        updateItem[id][size] = qty
+        setCartItem(updateItem)
         console.log(cartItem)
+    }
+
+    useEffect(() => {
+        // console.log(cartItem)
         getTotalCount()
-    }, [addToCart])
+        getTotalAmount()
+    }, [addToCart, getTotalAmount])
     const obj = {
-        assets, products, header, addToCart, getTotalCount, cartItem
+        assets, products, header, addToCart, getTotalCount, cartItem, updateCart, getTotalAmount
     }
     return (
         <UserContext.Provider value={obj}>

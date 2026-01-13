@@ -13,3 +13,18 @@ hr {
 .active hr {
     scale: 1;
 }
+
+input,
+button {
+    outline: none;
+}
+
+.checkcol input {
+    accent-color: #d4408c;
+    ;
+}
+
+input::placeholder {
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.47);
+}
