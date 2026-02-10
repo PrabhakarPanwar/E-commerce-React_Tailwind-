@@ -87,7 +87,7 @@ function Product() {
                 </p>
             </div>
             {/* cards end here */}
-            <RelatedProducts  />
+            <RelatedProducts />
         </div>
     ) : (<h1>No Product Found</h1>)
 }

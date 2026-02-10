@@ -9,23 +9,28 @@ import Footer from "./components/Footer";
 import Product from "./pages/Product";
 import PlaceOrder from "./pages/PlaceOrder";
 import Login from "./pages/Login";
+import DashBoard from "./pages/DashBoard";
+import PageNotFound from "./pages/PageNotFound";
 function App() {
   return (
-
-    <div className="mx-auto w-[70%]">
+    <div>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/collection" element={<Collection />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/product/:id" element={<Product />} />
-        <Route path="/placeOrder" element={<PlaceOrder />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-      <Footer />
+      <div className="mx-auto w-[70%] overflow-hidden">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/admin/dashboard" element={<DashBoard />} />
+          <Route path="/collection" element={<Collection />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:id" element={<Product />} />
+          <Route path="/placeOrder" element={<PlaceOrder />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+        <Footer />
 
+      </div>
     </div>
 
   )

@@ -105,7 +105,7 @@ function Collection() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-3">
-            {filteredProducts.map((i,index) => (
+            {filteredProducts.map((i, index) => (
               <ProductItems key={index} id={i.id} image={i.image[0]} price={i.price} name={i.name} />
             ))}
           </div>

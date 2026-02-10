@@ -2,29 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-
 hr {
-    scale: 0;
-    transition: 0.5s ease;
-    background-color: aqua;
-    height: 1.5px;
+  scale: 0;
+  transition: 0.5s ease;
+  background-color: aqua;
+  height: 1.5px;
 }
 
 .active hr {
-    scale: 1;
+  scale: 1;
 }
 
 input,
 button {
-    outline: none;
+  outline: none;
 }
 
 .checkcol input {
-    accent-color: #d4408c;
-    ;
+  accent-color: #d4408c;
 }
 
 input::placeholder {
-    font-weight: 700;
-    color: rgba(0, 0, 0, 0.47);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.47);
 }

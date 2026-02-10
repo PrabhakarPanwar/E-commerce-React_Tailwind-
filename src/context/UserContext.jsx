@@ -5,6 +5,8 @@ export const UserContext = createContext()
 
 function UserProvider({ children }) {
     const [cartItem, setCartItem] = useState({})
+
+
     const addToCart = (id, size) => {
         if (!size) {
             return "Choose size"
@@ -27,6 +29,8 @@ function UserProvider({ children }) {
         // console.log(cartItem)
 
     }
+
+
     const getTotalCount = () => {
         let totalCount = 0
         try {
@@ -58,7 +62,7 @@ function UserProvider({ children }) {
             let itemInfo = products.find(i => i.id == id)
             for (let s in cartItem[id]) {
                 if (cartItem[id][s]) {
-                        totalAmount += itemInfo.price *cartItem[id][s]
+                    totalAmount += itemInfo.price * cartItem[id][s]
                 }
             }
         }

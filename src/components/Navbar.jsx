@@ -7,7 +7,7 @@ function Navbar() {
   const { assets, getTotalCount } = useContext(UserContext)
   const [visible, setVisible] = useState(false)
   return (
-    <div className='flex justify-center items-center my-3 '>
+    <div className='flex justify-center items-center my-3 w-[70%] mx-auto'>
       <div className='flex w-[100%] justify-between items-center'>
         <div className=''>
           <img className='w-36' src={assets.logo} alt="logo" />
