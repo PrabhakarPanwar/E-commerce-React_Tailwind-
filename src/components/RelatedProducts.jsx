@@ -10,7 +10,7 @@ function RelatedProducts() {
             <div className='flex flex-wrap justify-center gap-3 my-8'>
                 {products.map((i) => (
                     <ProductItems key={i.id} id={i.id} image={i.image[0]} price={i.price} name={i.name} />
-                )).slice(0, 5)}
+                )).slice(0, 4)}
 
             </div>
         </div>

@@ -11,6 +11,7 @@ import PlaceOrder from "./pages/PlaceOrder";
 import Login from "./pages/Login";
 import DashBoard from "./pages/DashBoard";
 import PageNotFound from "./pages/PageNotFound";
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div>
@@ -29,6 +30,8 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
+
+        <ToastContainer />
 
       </div>
     </div>

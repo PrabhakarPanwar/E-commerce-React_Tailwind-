@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/frontend_assets/assets'
+import axios from "axios"
 
 function AddProduct() {
 
@@ -13,7 +14,7 @@ function AddProduct() {
 
     //Product 
 
-    const [name, setName] = useState([])
+    const [name, setName] = useState('')
     const [desc, setDesc] = useState("")
 
     //Category
@@ -22,14 +23,39 @@ function AddProduct() {
     const [subCat, setSubCat] = useState("")
 
     const [price, setPrice] = useState("")
-    const [sizes, setSizes] = useState("")
+    const [sizes, setSizes] = useState([])
 
     const toggleSize = (i) => {
         setSizes((back) =>
             back.includes(i) ? back.filter((s) => s !== i) : [...back, i]
         )
     }
+    async function dataSend(e) {
+        e.preventDefault()
+        let formData = new FormData()
+        console.log(name)
+        formData.append("Name", name)
+        formData.append("Description", desc)
+        formData.append("Category", cat)
+        formData.append("SubCategory", subCat)
+        formData.append("Price", price)
+        formData.append("Size", JSON.stringify(sizes))
+        img1 && formData.append("img1", img1)
+        img2 && formData.append("img2", img2)
+        img3 && formData.append("img3", img3)
+        img4 && formData.append("img4", img4)
+        console.log(formData)
+        try {
+            let res = await axios.post("http://localhost:8000/dashboard", formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+        } catch (error) {
+            console.log(error)
 
+        }
+    }
     return (
         <main className='flex bg-gray-100 border-gray-500 border-b-2'>
             <section className='w-[15%] flex flex-col gap-4'>
@@ -38,7 +64,7 @@ function AddProduct() {
                 <p className='cursor-pointer border-y-2 p-2'>Order Items</p>
             </section>
             <section className='w-[70%] border-gray-500 border-l-2 pl-10'>
-                <form className='py-3'>
+                <form className='py-3' onSubmit={dataSend}>
                     <p>Upload Images</p>
                     <div className="flex gap-4">
                         <label htmlFor="img1">
@@ -59,13 +85,13 @@ function AddProduct() {
                         </label>
                     </div>
                     <p>Product Name</p>
-                    <input className='p-2 w-[60%] border-gray-300 border-2' type="text" placeholder='Type Here' onClick={(i) => setName(i.target.value)} />
+                    <input className='p-2 w-[60%] border-gray-300 border-2' type="text" placeholder='Type Here' onChange={(i) => setName(i.target.value)} />
                     <p>Product Description</p>
-                    <textarea className='p-2 w-[60%] border-gray-300 border-2' name="" id="" placeholder='Type Here' onClick={(i) => setDesc(i.target.value)} cols="50"></textarea>
+                    <textarea className='p-2 w-[60%] border-gray-300 border-2' name="" id="" placeholder='Type Here' onChange={(i) => setDesc(i.target.value)} cols="50"></textarea>
                     <div className='flex gap-5'>
                         <section>
                             <p>Product Category</p>
-                            <select className='p-2 border-gray-300 border-2' name="" id="" onClick={(i) => setCat(i.target.value)}>
+                            <select className='p-2 border-gray-300 border-2' name="" id="" onChange={(i) => setCat(i.target.value)}>
                                 <option value="men">Men</option>
                                 <option value="women">Women</option>
                                 <option value="kid">Kid</option>
@@ -73,15 +99,15 @@ function AddProduct() {
                         </section>
                         <section>
                             <p>Product Sub-Category</p>
-                            <select className='p-2 border-gray-300 border-2' name="" id="" onClick={(i) => setSubCat(i.target.value)}>
-                                <option value="men">Topwear</option>
-                                <option value="women">Bottomwear</option>
-                                <option value="kid">Upperware</option>
+                            <select className='p-2 border-gray-300 border-2' name="" id="" onChange={(i) => setSubCat(i.target.value)}>
+                                <option value="topwear">Topwear</option>
+                                <option value="bottomwear">Bottomwear</option>
+                                <option value="upperware">Upperware</option>
                             </select>
                         </section>
                         <section>
                             <p>Price</p>
-                            <input className='w-[50%] border-gray-300 border-2 p-2' type="text" name="" id="" onClick={(i) => setPrice(i.target.value)} />
+                            <input className='w-[50%] border-gray-300 border-2 p-2' type="text" name="" id="" onChange={(i) => setPrice(i.target.value)} />
                         </section>
                     </div>
                     <p>Product Sizes</p>
@@ -92,7 +118,8 @@ function AddProduct() {
                             </div>
                         ))}
                     </div>
-                    <button className='px-10 py-3 bg-black text-white' type="submit">Add</button>
+                    <button className='px-10 py-3 bg-black text-white' type="submit" >Add</button>
+
                 </form>
                 <form></form>
                 <form></form>

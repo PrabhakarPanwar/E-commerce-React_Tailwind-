@@ -13,13 +13,14 @@ function Navbar() {
           <img className='w-36' src={assets.logo} alt="logo" />
         </div>
 
-        <ul className='flex hidden md:flex gap-5'>
+        <ul className=' hidden md:flex gap-5'>
           <NavLink to='/'>Home <hr /> </NavLink>
           <NavLink to='/collection'>Collection <hr /> </NavLink>
           <NavLink to='/about'>About <hr /> </NavLink>
           <NavLink to='/contact'>Contact <hr /> </NavLink>
+          <NavLink to='/login'>Login <hr /> </NavLink>
         </ul>
-        <div className='flex hidden md:flex gap-5'>
+        <div className=' hidden md:flex gap-5'>
           <img className='w-5 h-5 cursor-pointer' src={assets.search_icon} alt="search" />
           <img className='w-5 h-5 cursor-pointer' src={assets.profile_icon} alt="profile" />
           <Link to="/cart" className='relative'>
@@ -38,6 +39,7 @@ function Navbar() {
               <NavLink to='/collection'>Collection <hr /> </NavLink>
               <NavLink to='/about'>About <hr /> </NavLink>
               <NavLink to='/contact'>Contact <hr /> </NavLink>
+              <NavLink to='/login'>Login <hr /> </NavLink>
               <Link to="/cart" className='relative'>
                 <img className='w-5 h-5 cursor-pointer' src={assets.cart_icon} alt="cart" />
                 <p className='absolute flex justify-center items-center top-[12px] left-[10px] bg-black rounded-full text-white text-[0.5rem] h-[15px] w-[15px]'>{getTotalCount()}</p>

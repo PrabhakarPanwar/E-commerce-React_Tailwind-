@@ -32,7 +32,7 @@ function Product() {
                             ))}
                         </div>
                         <div className='mx-auto'>
-                            <img className='h-[70vh]' src={image} alt="" />
+                            <img className='h-[45vh] lg:h-[70vh]' src={image} alt="" />
                         </div>
                     </div>
                     <div className='flex flex-col flex-1 gap-5 items-center'>

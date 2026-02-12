@@ -20,7 +20,7 @@ function Home() {
                     <div className='flex flex-wrap justify-center gap-3 my-3'>
 
                         {products.map((i, index) => (
-                            <ProductItems key={index} name={i.name} price={i.price} image={i.image[0]} id={i.id} />)).slice(0, 10)}
+                            <ProductItems key={index} name={i.name} price={i.price} image={i.image[0]} id={i.id} />)).slice(0, 4)}
                     </div >
                 </div>
             </div>
@@ -29,10 +29,10 @@ function Home() {
                 <BestSeller />
 
                 <div className='flex justify-center'>
-                    <div className='flex flex-wrap justify-center gap-3 my-3 w-[80%]'>
+                    <div className='flex flex-wrap justify-center gap-3 my-3'>
 
                         {products.map((i,index) => (
-                            <ProductItems key={index} id={i.id} name={i.name} price={i.price} image={i.image[0]} />)).slice(10, 15)}
+                            <ProductItems key={index} id={i.id} name={i.name} price={i.price} image={i.image[0]} />)).slice(10, 14)}
                     </div >
                 </div>
             </div>

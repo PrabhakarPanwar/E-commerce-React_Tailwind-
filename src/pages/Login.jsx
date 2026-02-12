@@ -1,35 +1,138 @@
-import React, { useState } from 'react'
+import axios from "axios";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 function Login() {
-  const [toggle, setToggle] = useState(false)
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [pass, setPass] = useState("")
+  const [reglog, setReglog] = useState(true);
+  const [formData, setFormData] = useState({ pwd: "", name: "", email: "" })
 
-  function change() {
-    setToggle(!toggle);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value })
   }
+  const handleRegister = async () => {
+    let res = await axios.post("http://localhost:8000/register", formData)
+    // console.log(res)
+    if (res.data.success) {
+      toast.success(res.data.msg)
+      setTimeout(() => {
+        window.location.href = "http://localhost:5173/login"
+      }, 1000)
+    }
+  }
+
+  const handleLogin = async () => {
+    let res = await axios.post("http://localhost:8000/login", formData)
+    if (res.data.success) {
+      toast.success(res.data.msg)
+      setTimeout(() => {
+        window.location.href = "http://localhost:5173/",
+          window.localStorage.setItem("token", res.data.token)
+      }, 2000)
+    }
+    if (!res.data.success) {
+      toast.error(res.data.msg)
+    }
+  }
+
+
+
+
   return (
-    <div>
-      <center className='flex flex-col gap-3 w-[40%] my-20 m-auto checkcol'>
-        <div className='mb-8 text-3xl'>
-          <h1>{toggle ? "Login" : "Sign In"}</h1>
+    <main className="md:flex flex-col md:flex-row overflow-hidden">
+      <div className="flex z-10 flex-1 justify-center items-center  h-screen">
+        <div className="flex justify-center h-[80vh] sm:h-[45vh] flex-col gap-5 w-[55%]">
+          <h1 className="bg-gradient-to-r bg-clip-text text-transparent from-blue-600 to-red-600 text-5xl ">
+            Come On In.
+          </h1>
+
+          {reglog ? (
+            <>
+              <section className="flex flex-col gap-3">
+                <input
+                  className="p-2 border-b-2"
+                  type="email"
+                  placeholder="Username"
+                  id="email"
+                  onChange={handleChange}
+                />
+                <input
+                  className="p-2 border-b-2 "
+                  type="password"
+                  placeholder="password"
+                  id="pwd"
+                  onChange={handleChange}
+                />
+              </section>
+              <section className="flex flex-col gap-4">
+                <button
+                  className=" bg-slate-900 text-white rounded-full font-bold w-[60%] p-2"
+                  type="submit"
+                  id="btn"
+                  onClick={handleLogin}
+                >
+                  Log In
+                </button>
+                <button
+                  onClick={() => setReglog(!reglog)}
+                  className="md:w-[50%] w-[100%] bg-gradient-to-r bg-clip-text text-transparent text-left font-bold from-blue-600 to-red-600"
+                >
+                  Create an Account
+                </button>
+              </section>
+            </>
+          ) : (
+            <>
+              <section className="flex flex-col gap-3">
+                <input
+                  className="p-2 border-b-2"
+                  type="name"
+                  id="name"
+                  placeholder="Name"
+                  onChange={handleChange}
+                />
+                <input
+                  className="p-2 border-b-2"
+                  type="email"
+                  id="email"
+                  placeholder="Email address"
+                  onChange={handleChange}
+                />
+                <input
+                  className="p-2 border-b-2 "
+                  type="password"
+                  placeholder="Set password"
+                  id="pwd"
+                  onChange={handleChange}
+                />
+              </section>
+              <section className="flex flex-col gap-4">
+                <button
+                  className=" bg-slate-900 text-white rounded-full font-bold w-[60%] p-2"
+                  type="submit"
+                  id="btn"
+                  onClick={handleRegister}
+                >
+                  Register
+                </button>
+                <button
+                  onClick={() => setReglog(!reglog)}
+                  className="w-[100%] bg-gradient-to-r bg-clip-text text-transparent text-left font-bold from-blue-600 to-red-600"
+                >
+                  Have an Account
+                </button>
+              </section>
+            </>
+          )}
         </div>
-        {toggle ? "" :
-          <input className='bg-slate-200 py-2 px-2' value={name} onChange={i => setName(i.target.value)} type="name" placeholder='Name' />
-        }
-        <input className='bg-slate-200 py-2 px-2' value={email} onChange={i => setEmail(i.target.value)} type="email" placeholder='E-mail' />
-        <input className='bg-slate-200 py-2 px-2' value={pass} onChange={i => setPass(i.target.value)} type="password" placeholder='Password' />
-        <div className=' flex justify-between'>
-          <label className='font-light'>
-            <input type="checkbox" name="" id="" className='mr-1' />Remember me
-          </label>
-          <p className='text-blue-500 cursor-pointer ' onClick={change}>Click here to {toggle ? "sign in" : "login"}</p>
-        </div>
-        <button className='bg-[#d4408c] text-white py-3 w-[40%] mx-auto rounded-md'>{toggle ? "Login" : "Sign Up"}</button>
-      </center>
-    </div>
-  )
+      </div>
+      <div className="md:flex hidden md:absolute lg:static flex-1 h-screen ">
+        <img className="w-screen object-contain"
+          src="https://media.istockphoto.com/id/1281150061/vector/register-account-submit-access-login-password-username-internet-online-website-concept.jpg?s=612x612&w=0&k=20&c=9HWSuA9IaU4o-CK6fALBS5eaO1ubnsM08EOYwgbwGBo="
+          alt=""
+        />
+      </div>
+    </main>
+  );
 }
 
-export default Login
+export default Login;
