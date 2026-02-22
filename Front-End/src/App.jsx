@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Collection from "./pages/Collection";
@@ -13,13 +13,16 @@ import DashBoard from "./pages/DashBoard";
 import PageNotFound from "./pages/PageNotFound";
 import { ToastContainer } from "react-toastify";
 function App() {
+  const { pathname } = useLocation()
   return (
     <div>
       <Navbar />
+      <Routes>
+        <Route path="/admin/dashboard" element={<DashBoard />} />
+      </Routes>
       <div className="mx-auto w-[70%] overflow-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin/dashboard" element={<DashBoard />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -29,9 +32,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        <Footer />
 
         <ToastContainer />
+        {pathname !== "/login" ? (<Footer />) : ""}
 
       </div>
     </div>

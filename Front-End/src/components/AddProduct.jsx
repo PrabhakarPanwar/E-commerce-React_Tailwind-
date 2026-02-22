@@ -57,13 +57,13 @@ function AddProduct() {
         }
     }
     return (
-        <main className='flex bg-gray-100 border-gray-500 border-b-2'>
+        <main className='flex bg-gray-100 h-[80vh] border-gray-500 border-b-2'>
             <section className='w-[15%] flex flex-col gap-4'>
                 <p className='cursor-pointer border-y-2 p-2'>Add Items</p>
                 <p className='cursor-pointer border-y-2 p-2'>List Items</p>
                 <p className='cursor-pointer border-y-2 p-2'>Order Items</p>
             </section>
-            <section className='w-[70%] border-gray-500 border-l-2 pl-10'>
+            <section className='w-[85%] border-gray-500 border-l-2 pl-10'>
                 <form className='py-3' onSubmit={dataSend}>
                     <p>Upload Images</p>
                     <div className="flex gap-4">
@@ -84,11 +84,15 @@ function AddProduct() {
                             <input className='hidden' type="file" name="" id="img4" accept='image/*' onChange={(i) => setImg4(i.target.files[0])} />
                         </label>
                     </div>
-                    <p>Product Name</p>
-                    <input className='p-2 w-[60%] border-gray-300 border-2' type="text" placeholder='Type Here' onChange={(i) => setName(i.target.value)} />
-                    <p>Product Description</p>
-                    <textarea className='p-2 w-[60%] border-gray-300 border-2' name="" id="" placeholder='Type Here' onChange={(i) => setDesc(i.target.value)} cols="50"></textarea>
-                    <div className='flex gap-5'>
+                    <div className=' py-3'>
+                        <p>Product Name</p>
+                        <input className='p-2 w-[60%] border-gray-300 border-2' type="text" placeholder='Type Here' onChange={(i) => setName(i.target.value)} />
+                    </div>
+                    <div className=' py-3'>
+                        <p>Product Description</p>
+                        <textarea className='p-2 w-[60%] border-gray-300 border-2' name="" id="" placeholder='Type Here' onChange={(i) => setDesc(i.target.value)} cols="50"></textarea>
+                    </div>
+                    <div className=' py-3 flex gap-5'>
                         <section>
                             <p>Product Category</p>
                             <select className='p-2 border-gray-300 border-2' name="" id="" onChange={(i) => setCat(i.target.value)}>
@@ -110,13 +114,15 @@ function AddProduct() {
                             <input className='w-[50%] border-gray-300 border-2 p-2' type="text" name="" id="" onChange={(i) => setPrice(i.target.value)} />
                         </section>
                     </div>
-                    <p>Product Sizes</p>
-                    <div className='flex gap-3 pb-5'>
-                        {["S", "M", "L", "XL", "XXL"].map((i, index) => (
-                            <div key={index} onClick={() => toggleSize(i)} className={`w-10 h-10 flex items-center justify-center ${sizes.includes(i) ? "bg-gray-400" : ""} `}>
-                                <p>{i}</p>
-                            </div>
-                        ))}
+                    <div className='py-1'>
+                        <p>Product Sizes</p>
+                        <div className='flex gap-3 pb-5'>
+                            {["S", "M", "L", "XL", "XXL"].map((i, index) => (
+                                <div key={index} onClick={() => toggleSize(i)} className={`w-10 h-10 flex items-center justify-center transition-colors duration-500 cursor-pointer  ${sizes.includes(i) ? "bg-orange-400" : ""} `}>
+                                    <p>{i}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                     <button className='px-10 py-3 bg-black text-white' type="submit" >Add</button>
 

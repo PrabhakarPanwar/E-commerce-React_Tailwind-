@@ -11,31 +11,9 @@ function Home() {
     const { products } = useContext(UserContext)
     return (
         <div>
-            <div className='flex flex-col gap-3 my-3'>
-                <Hero />
-
-                <LatestCollection />
-
-                <div className='flex justify-center'>
-                    <div className='flex flex-wrap justify-center gap-3 my-3'>
-
-                        {products.map((i, index) => (
-                            <ProductItems key={index} name={i.name} price={i.price} image={i.image[0]} id={i.id} />)).slice(0, 4)}
-                    </div >
-                </div>
-            </div>
-            <div className='flex flex-col gap-3 my-3'>
-
-                <BestSeller />
-
-                <div className='flex justify-center'>
-                    <div className='flex flex-wrap justify-center gap-3 my-3'>
-
-                        {products.map((i,index) => (
-                            <ProductItems key={index} id={i.id} name={i.name} price={i.price} image={i.image[0]} />)).slice(10, 14)}
-                    </div >
-                </div>
-            </div>
+            <Hero />
+            <LatestCollection />
+            <BestSeller />
             <OurPolicy />
             <NewsLetterBox />
         </div>

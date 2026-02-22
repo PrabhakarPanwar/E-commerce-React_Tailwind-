@@ -39,7 +39,7 @@ function Login() {
 
   return (
     <main className="md:flex flex-col md:flex-row overflow-hidden">
-      <div className="flex z-10 flex-1 justify-center items-center  h-screen">
+      <div className="flex z-10 flex-1 justify-center items-center h-screen">
         <div className="flex justify-center h-[80vh] sm:h-[45vh] flex-col gap-5 w-[55%]">
           <h1 className="bg-gradient-to-r bg-clip-text text-transparent from-blue-600 to-red-600 text-5xl ">
             Come On In.
@@ -125,7 +125,7 @@ function Login() {
           )}
         </div>
       </div>
-      <div className="md:flex hidden md:absolute lg:static flex-1 h-screen ">
+      <div className="md:flex hidden md:absolute opacity-10 lg:opacity-100 lg:static flex-1 h-screen ">
         <img className="w-screen object-contain"
           src="https://media.istockphoto.com/id/1281150061/vector/register-account-submit-access-login-password-username-internet-online-website-concept.jpg?s=612x612&w=0&k=20&c=9HWSuA9IaU4o-CK6fALBS5eaO1ubnsM08EOYwgbwGBo="
           alt=""
