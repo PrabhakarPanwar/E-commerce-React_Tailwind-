@@ -28,6 +28,7 @@ function Login() {
         window.location.href = "http://localhost:5173/",
           window.localStorage.setItem("token", res.data.token)
       }, 2000)
+      
     }
     if (!res.data.success) {
       toast.error(res.data.msg)

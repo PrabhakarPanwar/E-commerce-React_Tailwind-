@@ -12,10 +12,26 @@ function verifyToken(req, res, next) {
   }
 
   if (token) {
-    console.log(token);
-    let decode = jwt.verify(token, "Prabhakar");
-    console.log(decode);
-    next();
+    return res.json({
+      success: false,
+      msg: "You are not authorised",
+    });
+  }
+  try {
+    const decoded = jwt.verify(token, "Prabhakar");
+
+    if (decoded) {
+      return res.json({
+        success: true,
+        msg: "You are Authorised",
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.json({
+      success: false,
+      msg: "You are Not Authorised",
+    });
   }
 }
 

@@ -19,8 +19,8 @@ function AddProduct() {
 
     //Category
 
-    const [cat, setCat] = useState("")
-    const [subCat, setSubCat] = useState("")
+    const [cat, setCat] = useState("Men")
+    const [subCat, setSubCat] = useState("TopWear")
 
     const [price, setPrice] = useState("")
     const [sizes, setSizes] = useState([])
@@ -33,24 +33,19 @@ function AddProduct() {
     async function dataSend(e) {
         e.preventDefault()
         let formData = new FormData()
-        console.log(name)
-        formData.append("Name", name)
-        formData.append("Description", desc)
-        formData.append("Category", cat)
-        formData.append("SubCategory", subCat)
-        formData.append("Price", price)
-        formData.append("Size", JSON.stringify(sizes))
+        formData.append("name", name)
+        formData.append("description", desc)
+        formData.append("category", cat)
+        formData.append("subCategory", subCat)
+        formData.append("price", price)
+        formData.append("size", JSON.stringify(sizes))
         img1 && formData.append("img1", img1)
         img2 && formData.append("img2", img2)
         img3 && formData.append("img3", img3)
         img4 && formData.append("img4", img4)
         console.log(formData)
         try {
-            let res = await axios.post("http://localhost:8000/dashboard", formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
+            let res = await axios.post("http://localhost:8000/add", formData)
         } catch (error) {
             console.log(error)
 
@@ -58,12 +53,8 @@ function AddProduct() {
     }
     return (
         <main className='flex bg-gray-100 h-[80vh] border-gray-500 border-b-2'>
-            <section className='w-[15%] flex flex-col gap-4'>
-                <p className='cursor-pointer border-y-2 p-2'>Add Items</p>
-                <p className='cursor-pointer border-y-2 p-2'>List Items</p>
-                <p className='cursor-pointer border-y-2 p-2'>Order Items</p>
-            </section>
-            <section className='w-[85%] border-gray-500 border-l-2 pl-10'>
+
+            <section className=' border-gray-500 border-l-2 pl-10'>
                 <form className='py-3' onSubmit={dataSend}>
                     <p>Upload Images</p>
                     <div className="flex gap-4">
@@ -127,8 +118,6 @@ function AddProduct() {
                     <button className='px-10 py-3 bg-black text-white' type="submit" >Add</button>
 
                 </form>
-                <form></form>
-                <form></form>
             </section>
         </main>
     )
