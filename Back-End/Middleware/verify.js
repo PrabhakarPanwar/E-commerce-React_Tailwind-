@@ -10,13 +10,6 @@ function verifyToken(req, res, next) {
       success: false,
     });
   }
-
-  if (token) {
-    return res.json({
-      success: false,
-      msg: "You are not authorised",
-    });
-  }
   try {
     const decoded = jwt.verify(token, "Prabhakar");
 

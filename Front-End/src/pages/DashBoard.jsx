@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 function DashBoard() {
     const [tab, setTab] = useState("add")
 
-    async function verfication() {
+    async function verification() {
         let token = window.localStorage.getItem("token")
         console.log(token)
         let res = await axios.get("http://localhost:8000/verify", {
@@ -22,11 +22,11 @@ function DashBoard() {
             toast.error(res.data.msg)
             setTimeout(() => {
                 window.location.href = "/"
-            }, 2000)
+            }, 1500)
         }
     }
     useEffect(() => {
-        verfication()
+        verification()
     }, [])
     return (
         <div className='flex justify-center'>

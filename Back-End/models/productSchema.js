@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema = mongoose.Schema({
+const productSchema = mongoose.Schema({
   name: String,
   description: String,
   category: String,
@@ -9,6 +9,6 @@ const userSchema = mongoose.Schema({
   price: Number,
   image: String,
 });
-let user = mongoose.model("commerce", userSchema);
+let product = mongoose.model("product", productSchema);
 
-export default user;
+export default product;

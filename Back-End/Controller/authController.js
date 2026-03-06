@@ -1,15 +1,27 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import user from "../models/productSchema.js";
 import { v2 as cloudinary } from "cloudinary";
+import product from "../models/productSchema.js";
+import user from "../models/userSchema.js";
 
-let cryptedPass, token;
+let token;
 
-export const register = (req, res) => {
+export const register = async (req, res) => {
   const { name, email, pwd } = req.body;
-  bcrypt.hash(pwd, 10, (error, hash) => {
-    cryptedPass = hash;
-  });
+
+  let userCheck = await user.findOne({ email });
+
+  if (userCheck) {
+    return res.json({
+      success: true,
+      msg: "User Already Registered",
+    });
+  }
+
+  let hash = await bcrypt.hash(pwd, 10);
+
+  await user.create({ name, email, pwd: hash });
+
   res.json({
     success: true,
     msg: "User Id created",
@@ -17,32 +29,32 @@ export const register = (req, res) => {
 };
 export const login = async (req, res) => {
   const { email, pwd } = req.body;
-  // console.log(cryptedPass);
-  if (cryptedPass) {
-    let comparing = await bcrypt.compare(pwd, cryptedPass);
-    // console.log(comparing);
-    if (comparing) {
-      token = jwt.sign({ email }, "Prabhakar", { expiresIn: "600" });
 
-      res.json({
-        token,
-        success: true,
-        msg: "Successfully Login",
-      });
-    }
-    if (!comparing) {
-      res.json({
-        success: false,
-      });
-    }
-  }
-  if (!cryptedPass) {
-    res.json({
+  let userCheck = await user.findOne({ email });
+  if (!userCheck) {
+    return res.json({
       success: false,
-      msg: "User Not Registered",
+      msg: "User Id Not Registered",
     });
   }
+  let comparing = await bcrypt.compare(pwd, userCheck.pwd);
+
+  if (!comparing) {
+    return res.json({
+      success: false,
+      msg: "Invalid Password",
+    });
+  }
+
+  token = jwt.sign({ email }, "Prabhakar", { expiresIn: "10m" });
+
+  res.json({
+    token,
+    success: true,
+    msg: "Successfully Login",
+  });
 };
+
 export const add = async (req, res) => {
   const { name, description, category, subCategory, price, size } = req.body;
 
@@ -64,7 +76,7 @@ export const add = async (req, res) => {
     }),
   );
 
-  let r1 = await user.create({
+  let r1 = await product.create({
     name,
     description,
     category,
