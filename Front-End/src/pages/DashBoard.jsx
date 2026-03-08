@@ -12,7 +12,7 @@ function DashBoard() {
     async function verification() {
         let token = window.localStorage.getItem("token")
         console.log(token)
-        let res = await axios.get("http://localhost:8000/verify", {
+        let res = await axios.get("https://e-commerce-react-tailwind.onrender.com/verify", {
             headers: { token },
         })
         if (res.data.success) {
