@@ -11,7 +11,6 @@ app.use(cors());
 mongooseConnect();
 
 app.use(homeRouter);
-
-app.listen(8000, () => {
+app.listen(process.env.PORT, () => {
   console.log("ok");
 });

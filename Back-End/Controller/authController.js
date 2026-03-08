@@ -46,7 +46,7 @@ export const login = async (req, res) => {
     });
   }
 
-  token = jwt.sign({ email }, "Prabhakar", { expiresIn: "10m" });
+  token = jwt.sign({ email }, process.env.JWT_SECRET_KEY, { expiresIn: "10m" });
 
   res.json({
     token,
