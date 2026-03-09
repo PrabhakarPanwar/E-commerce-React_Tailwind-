@@ -9,9 +9,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://fashioncity001.netlify.app/",
+    origin: "https://fashioncity001.netlify.app", // allow only your frontend
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   }),
 );
+
 mongooseConnect();
 
 app.use(homeRouter);
