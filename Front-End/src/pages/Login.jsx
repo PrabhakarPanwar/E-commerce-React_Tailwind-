@@ -10,7 +10,7 @@ function Login() {
     setFormData({ ...formData, [e.target.id]: e.target.value })
   }
   const handleRegister = async () => {
-    let res = await axios.post("https://e-commerce-react-tailwind.onrender.com/register", formData)
+    let res = await axios.post("https://e-commerce-backend-kgrj.onrender.com/register", formData)
     // console.log(res)
     if (res.data.success) {
       toast.success(res.data.msg)
@@ -21,7 +21,7 @@ function Login() {
   }
 
   const handleLogin = async () => {
-    let res = await axios.post("https://e-commerce-react-tailwind.onrender.com/login", formData)
+    let res = await axios.post("https://e-commerce-backend-kgrj.onrender.com/login", formData)
     if (res.data.success) {
       toast.success(res.data.msg)
       setTimeout(() => {

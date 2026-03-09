@@ -45,7 +45,7 @@ function AddProduct() {
         img4 && formData.append("img4", img4)
         console.log(formData)
         try {
-            let res = await axios.post("https://e-commerce-react-tailwind.onrender.com/add", formData)
+            let res = await axios.post("https://e-commerce-backend-kgrj.onrender.com/add", formData)
         } catch (error) {
             console.log(error)
 
