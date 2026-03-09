@@ -7,7 +7,11 @@ import "dotenv/config";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "https://e-commerce-react-tailwind-wfqw.vercel.app" }));
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://fashioncity001.netlify.app/"],
+  }),
+);
 mongooseConnect();
 
 app.use(homeRouter);
