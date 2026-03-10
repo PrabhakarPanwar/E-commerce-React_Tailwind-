@@ -5,19 +5,25 @@ import mongooseConnect from "./connection/connect.js";
 import "dotenv/config";
 
 const app = express();
+
 app.use(
   cors({
-    origin: "https://fashioncity001.netlify.app", // allow only your frontend
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "https://fashioncity001.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   }),
 );
+
+// Explicitly handle preflight
+app.options("*", cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongooseConnect();
 
 app.use(homeRouter);
+
 app.listen(process.env.PORT, () => {
   console.log("ok");
 });
