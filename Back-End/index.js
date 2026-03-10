@@ -5,8 +5,6 @@ import mongooseConnect from "./connection/connect.js";
 import "dotenv/config";
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "https://fashioncity001.netlify.app", // allow only your frontend
@@ -14,6 +12,8 @@ app.use(
     credentials: true,
   }),
 );
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 mongooseConnect();
 
